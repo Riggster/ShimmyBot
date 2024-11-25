@@ -1,9 +1,15 @@
+version: '3.8'
+
 services:
   postgres:
-    image: 'postgres:latest'
+    image: postgres:latest
+    container_name: shimmybot_db
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: shimmybot
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ../ShimmybotVolume:/var/lib/postgresql/data
     ports:
-      - '5432'
+      - "5432:5432"
+      
